@@ -42,6 +42,7 @@ public class L345 {
         }
         List<Character> vowelsLst=Arrays.asList(new Character[]{'a','e','i','o','u','A','E','I','O','U'});
         char[] charArr=new char[s.length()];
+
         int i=0;
         int j=s.length()-1;
         while(i<=j){

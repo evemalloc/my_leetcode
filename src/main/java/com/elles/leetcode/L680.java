@@ -23,7 +23,9 @@ public class L680 {
     @Test
     public void testOk(){
 
-        System.out.println(validPalindrome("cbbcc"));
+//        System.out.println(validPalindrome("cbbcc"));
+        System.out.println(validPalindrome2("abc"));
+
     }
 
     public boolean validPalindrome(String s) {
@@ -47,5 +49,45 @@ public class L680 {
 
         return true;
     }
+
+
+    public boolean validPalindrome2(String s) {
+        int left=0;
+        int right=s.length()-1;
+        while(left<=right){
+            char leftChar=s.charAt(left);
+            char rightChar=s.charAt(right);
+            if(leftChar==rightChar){
+                left++;
+                right--;
+            }else {
+                String subStringLeft=s.substring(left,right);//TODO 这里需要特别注意substring的用法 例如："abc".substring(0,2)=ab,
+                // "abc".substring(1,3)=bc;
+                String subStringRight=s.substring(left+1,right+1);
+                return validPalindromeSub(subStringLeft)||validPalindromeSub(subStringRight);
+            }
+        }
+
+        return true;
+
+    }
+
+    private boolean validPalindromeSub(String s){
+        int left=0;
+        int right=s.length()-1;
+        while(left<=right){
+            char leftChar=s.charAt(left);
+            char rightChar=s.charAt(right);
+            if(leftChar!=rightChar){
+                return false;
+            }
+            left++;
+            right--;
+
+        }
+
+        return true;
+    }
+
 
 }
